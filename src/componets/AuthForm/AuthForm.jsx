@@ -21,7 +21,7 @@ const AuthForm = () => {
   const navigate = useNavigate();
   const toast = useToast();
   const handleAuth = () => {
-    if (!inputs.email || !inputs.password || !inputs.confirmPassword)
+    if (!inputs.email || !inputs.password )
       toast({
         title: "Error",
         description: "Please fill all fields",
@@ -30,7 +30,7 @@ const AuthForm = () => {
         isClosable: true,
         position: "top-right",
       });
-    if (inputs.password !== inputs.confirmPassword)
+    if (!isLogin && inputs.password !== inputs.confirmPassword)
     toast({
       title: "Error",
       description: "You haven`t confirm password",
@@ -39,6 +39,7 @@ const AuthForm = () => {
       isClosable: true,
       position: "top-right",
     });
+    navigate('/')
   };
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
