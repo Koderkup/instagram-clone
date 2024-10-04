@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Box,
   VStack,
@@ -10,15 +9,12 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
+import Login from "./Login";
+import SignUp from "./SignUp";
+
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const navigate = useNavigate();
   const toast = useToast();
   const handleAuth = () => {
     if (!inputs.email || !inputs.password )
@@ -39,51 +35,13 @@ const AuthForm = () => {
       isClosable: true,
       position: "top-right",
     });
-    navigate('/')
-  };
-  const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
         <VStack spacing={4}>
           <Image src="/logo.png" alt="instagram" h={24} cursor={"pointer"} />
-          <Input
-            placeholder="Email"
-            type="email"
-            name="email"
-            fontSize={14}
-            value={inputs.email}
-            onChange={handleChange}
-          />
-          <Input
-            placeholder="Password"
-            type="password"
-            name="password"
-            fontSize={14}
-            value={inputs.password}
-            onChange={handleChange}
-          />
-          {!isLogin ? (
-            <Input
-              placeholder="Confirm password"
-              type="password"
-              name="confirmPassword"
-              fontSize={14}
-              value={inputs.confirmPassword}
-              onChange={handleChange}
-            />
-          ) : null}
-          <Button
-            w={"full"}
-            colorScheme="blue"
-            size={"sm"}
-            fontSize={14}
-            onClick={handleAuth}
-          >
-            {isLogin ? "Log in" : "Sign Up"}
-          </Button>
+          {isLogin ? <Login/> : <SignUp/> }
           <Flex
             alignItems={"center"}
             justifyContent={"center"}
