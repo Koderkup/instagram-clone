@@ -15,6 +15,7 @@ const Login = () => {
         placeholder="Email"
         type="email"
         name="email"
+        size={"sm"}
         fontSize={14}
         value={inputs.email}
         onChange={handleChange}
@@ -23,6 +24,7 @@ const Login = () => {
         placeholder="Password"
         type="password"
         name="password"
+        size={"sm"}
         fontSize={14}
         value={inputs.password}
         onChange={handleChange}

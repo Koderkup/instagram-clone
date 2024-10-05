@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import GoogleAuth from './GoogleAuth'
 
 
 const AuthForm = () => {
@@ -55,16 +56,7 @@ const AuthForm = () => {
             </Text>
             <Box flex={2} h={"1px"} bg={"gray.400"} />
           </Flex>
-          <Flex
-            justifyContent={"center"}
-            alignItems={"center"}
-            cursor={"pointer"}
-          >
-            <Image src="/google.png" alt="Google logo" w={5} />
-            <Text mx="2" color={"blue.500"}>
-              Log in with Google
-            </Text>
-          </Flex>
+         <GoogleAuth/>
         </VStack>
       </Box>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
