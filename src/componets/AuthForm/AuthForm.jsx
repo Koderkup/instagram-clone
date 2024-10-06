@@ -7,7 +7,6 @@ import {
   Button,
   Flex,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -16,27 +15,7 @@ import GoogleAuth from './GoogleAuth'
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const toast = useToast();
-  const handleAuth = () => {
-    if (!inputs.email || !inputs.password )
-      toast({
-        title: "Error",
-        description: "Please fill all fields",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "top-right",
-      });
-    if (!isLogin && inputs.password !== inputs.confirmPassword)
-    toast({
-      title: "Error",
-      description: "You haven`t confirm password",
-      status: "error",
-      duration: 5000,
-      isClosable: true,
-      position: "top-right",
-    });
-  };
+  
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>

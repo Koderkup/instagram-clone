@@ -9,7 +9,7 @@ const AuthPage = () => {
           <Box display={{ base: "none", md: "block" }}>
             <Image src="/auth.png" h={650} alt="Phone image" />
           </Box>
-          <VStack spacing={4} align={"stretch"}>
+          <VStack spacing={4} align={"stretch"} my={"50px"}>
             <AuthForm />
             <Box textAlign={"center"}>Get the App.</Box>
             <Flex gap={5} justifyContent={"center"}>
@@ -21,6 +21,6 @@ const AuthPage = () => {
       </Container>
     </Flex>
   );
-}
+};
 
-export default AuthPage
+export default AuthPage;

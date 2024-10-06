@@ -19,11 +19,23 @@ const SuggestedUsers = () => {
           See All
         </Text>
       </Flex>
-      <SuggestedUser name={"Dan Abramov"} followers={1326} avatar={'https://bit.ly/dan-abramov'}/>
-      <SuggestedUser name={"Ryan Florence"} followers={537} avatar={'https://bit.ly/dan-abramov'}/>
-      <SuggestedUser name={"Chrystian Nwamba"} followers={426} avatar={'https://bit.ly/dan-abramov'}/>
-      
-      <Box fontSize={12} mt={5} color={"gray.500"} alignSelf={'start'}>
+      <SuggestedUser
+        name={"Dan Abramov"}
+        followers={1326}
+        avatar={"https://bit.ly/dan-abramov"}
+      />
+      <SuggestedUser
+        name={"Ryan Florence"}
+        followers={537}
+        avatar={"https://bit.ly/dan-abramov"}
+      />
+      <SuggestedUser
+        name={"Chrystian Nwamba"}
+        followers={426}
+        avatar={"https://bit.ly/dan-abramov"}
+      />
+
+      <Box fontSize={12} mt={5} color={"gray.500"} alignSelf={"start"}>
         &copy; 2024 Build by{" "}
         <Link
           href="https://www.linkedin.com/in/kuzin-peter-68b111250"
@@ -31,7 +43,7 @@ const SuggestedUsers = () => {
           color={"blue.500"}
           fontSize={14}
         >
-          Koderkup
+          Koderkup <sup>[(ƿқ)]</sup>
         </Link>
       </Box>
     </VStack>
