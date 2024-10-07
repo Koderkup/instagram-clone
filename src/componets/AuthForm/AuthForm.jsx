@@ -10,18 +10,17 @@ import {
 } from "@chakra-ui/react";
 import Login from "./Login";
 import SignUp from "./SignUp";
-import GoogleAuth from './GoogleAuth'
-
+import GoogleAuth from "./GoogleAuth";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  
+
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
         <VStack spacing={4}>
           <Image src="/logo.png" alt="instagram" h={24} cursor={"pointer"} />
-          {isLogin ? <Login/> : <SignUp/> }
+          {isLogin ? <Login /> : <SignUp />}
           <Flex
             alignItems={"center"}
             justifyContent={"center"}
@@ -35,7 +34,7 @@ const AuthForm = () => {
             </Text>
             <Box flex={2} h={"1px"} bg={"gray.400"} />
           </Flex>
-         <GoogleAuth/>
+          <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"} />
         </VStack>
       </Box>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
