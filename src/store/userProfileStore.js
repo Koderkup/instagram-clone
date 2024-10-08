@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useUserProfileStore = create((set)=>({
-userProfile: {},
+userProfile: null,
 setUserProfile: (userProfile)=>set({userProfile}),
 // addPost:()
 }))
