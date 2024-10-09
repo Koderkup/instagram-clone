@@ -1,39 +1,50 @@
 import React from "react";
 import SuggestedUser from "./SuggestedUser";
 import SuggestedHeader from "./SuggestedHeader";
-import { VStack, Flex, Box, Text, Link } from "@chakra-ui/react";
+import {
+  VStack,
+  Flex,
+  Box,
+  Text,
+  Link,
+  Stack,
+  Skeleton,
+} from "@chakra-ui/react";
+import useGetSuggestedUsers from "../../hooks/useGetSuggestedUsers";
+import useSearchUser from "../../hooks/useSearchUser";
 const SuggestedUsers = () => {
+  const { setUser } = useSearchUser();
+  const { isLoading, suggestedUsers } = useGetSuggestedUsers();
+  if (isLoading) {
+    return (
+      <Stack spacing={4}>
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+        <Skeleton height="40px" />
+      </Stack>
+    );
+  }
   return (
     <VStack gap={4} px={6} py={8}>
       <SuggestedHeader />
-      <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
-        <Text color={"gray.500"} fontSize={12} fontWeight={"bold"}>
-          Suggested for you
-        </Text>
-        <Text
-          _hover={{ color: "gray.400" }}
-          fontSize={12}
-          fontWeight={"bold"}
-          cursor={"pointer"}
-        >
-          See All
-        </Text>
-      </Flex>
-      <SuggestedUser
-        name={"Dan Abramov"}
-        followers={1326}
-        avatar={"https://bit.ly/dan-abramov"}
-      />
-      <SuggestedUser
-        name={"Ryan Florence"}
-        followers={537}
-        avatar={"https://bit.ly/dan-abramov"}
-      />
-      <SuggestedUser
-        name={"Chrystian Nwamba"}
-        followers={426}
-        avatar={"https://bit.ly/dan-abramov"}
-      />
+      {suggestedUsers.length !== 0 && (
+        <Flex alignItems={"center"} justifyContent={"space-between"} w={"full"}>
+          <Text fontSize={12} fontWeight={"bold"} color={"gray.500"}>
+            Suggested for you
+          </Text>
+          <Text
+            fontSize={12}
+            fontWeight={"bold"}
+            _hover={{ color: "gray.400" }}
+            cursor={"pointer"}
+          >
+            See All
+          </Text>
+        </Flex>
+      )}
+      {suggestedUsers.map((user) => (
+        <SuggestedUser user={user} key={user.id} setUser={setUser} />
+      ))}
 
       <Box fontSize={12} mt={5} color={"gray.500"} alignSelf={"start"}>
         &copy; 2024 Build by{" "}

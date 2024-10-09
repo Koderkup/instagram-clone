@@ -23,7 +23,6 @@ const Search = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const searchRef = useRef(null);
   const { user, isLoading, getUserProfile, setUser } = useSearchUser();
-
   const handleSearchUser = (e) => {
     e.preventDefault();
     getUserProfile(searchRef.current.value);
