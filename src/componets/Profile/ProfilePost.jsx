@@ -37,7 +37,7 @@ const ProfilePost = ({ post }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePost = usePostStore((state) => state.deletePost);
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
-
+  console.log(post)
   const handleDeletePost = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     if (isDeleting) return;
@@ -185,7 +185,7 @@ const ProfilePost = ({ post }) => {
                   {post.caption && <Caption post={post} />}
                   {/* COMMENTS */}
                   {post.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} />
+                    <Comment key={Date.now()} comment={comment} />
                   ))}
                 </VStack>
                 <Divider my={4} bg={"gray.8000"} />

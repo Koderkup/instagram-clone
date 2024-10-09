@@ -54,7 +54,7 @@ const SuggestedUsers = () => {
           color={"blue.500"}
           fontSize={14}
         >
-          Koderkup <sup>[(ƿқ)]</sup>
+          {"<Koderkup/>"}
         </Link>
       </Box>
     </VStack>
