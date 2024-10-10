@@ -1,7 +1,7 @@
-export const InstagramLogo = () => (
+export const InstagramLogo = ({fill}) => (
   <svg
     aria-label="Instagram"
-    color="rgb(245, 245, 245)"
+    color={fill}
     fill="rgb(245, 245, 245)"
     height="29"
     role="img"
@@ -17,11 +17,11 @@ export const InstagramLogo = () => (
   </svg>
 );
 
-export const InstagramMobileLogo = () => (
+export const InstagramMobileLogo = ({fill}) => (
   <svg
     aria-label="Instagram"
-    color="rgb(245, 245, 245)"
-    fill="rgb(245, 245, 245)"
+    color={fill}
+    fill={fill}
     height="24"
     role="img"
     viewBox="0 0 24 24"
@@ -32,11 +32,11 @@ export const InstagramMobileLogo = () => (
   </svg>
 );
 
-export const SearchLogo = () => (
+export const SearchLogo = ({fill}) => (
   <svg
     aria-label="Search"
-    color="rgb(245, 245, 245)"
-    fill="rgb(245, 245, 245)"
+    color={fill}
+    fill={fill}
     height="24"
     role="img"
     viewBox="0 0 24 24"
@@ -147,8 +147,8 @@ export const MessagesLogo = () => (
 export const NotificationsLogo = () => (
   <svg
     aria-label="Notifications"
-    color="rgb(245, 245, 245)"
-    fill="rgb(245, 245, 245)"
+    color="rgb(255,255,255)"
+    fill="red"
     height="24"
     role="img"
     viewBox="0 0 24 24"
@@ -173,11 +173,11 @@ export const UnlikeLogo = () => (
   </svg>
 );
 
-export const CreatePostLogo = () => (
+export const CreatePostLogo = ({fill}) => (
   <svg
     aria-label="New post"
-    color="rgb(245, 245, 245)"
-    fill="rgb(245, 245, 245)"
+    color={fill}
+    fill={fill}
     height="24"
     role="img"
     viewBox="0 0 24 24"
@@ -216,11 +216,11 @@ export const CreatePostLogo = () => (
   </svg>
 );
 
-export const CommentLogo = () => (
+export const CommentLogo = ({fill}) => (
   <svg
     aria-label="Comment"
-    color="rgb(245, 245, 245)"
-    fill="rgb(245, 245, 245)"
+    color={fill}
+    fill="none"
     height="24"
     role="img"
     viewBox="0 0 24 24"
@@ -229,7 +229,7 @@ export const CommentLogo = () => (
     <title>Comment</title>
     <path
       d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"
-      fill="none"
+      fill={fill}
       stroke="currentColor"
       strokeLinejoin="round"
       strokeWidth="2"

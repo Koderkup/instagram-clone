@@ -17,6 +17,7 @@ const CommentsModal = ({ isOpen, onClose, post }) => {
   const { handlePostComment, isCommenting } = usePostComment();
   const commentRef = useRef(null);
   const commentsContainerRef = useRef(null);
+  
   const handleSubmitComment = async (e) => {
     // do not refresh the page, prevent it
     e.preventDefault();

@@ -18,11 +18,13 @@ import { SearchLogo } from "../../assets/constants";
 import useSearchUser from "../../hooks/useSearchUser";
 import { useRef } from "react";
 import SuggestedUser from "../SuggestedUsers/SuggestedUser";
+import useIconColorStore from "../../store/iconColorStore";
 
 const Search = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const searchRef = useRef(null);
   const { user, isLoading, getUserProfile, setUser } = useSearchUser();
+  const fill = useIconColorStore((state) => state.fill);
   const handleSearchUser = (e) => {
     e.preventDefault();
     getUserProfile(searchRef.current.value);
@@ -48,7 +50,7 @@ const Search = () => {
           justifyContent={{ base: "center", md: "flex-start" }}
           onClick={onOpen}
         >
-          <SearchLogo />
+          <SearchLogo fill={fill} />
           <Box display={{ base: "none", md: "block" }}>Search</Box>
         </Flex>
       </Tooltip>

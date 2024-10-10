@@ -174,10 +174,11 @@ function useCreatePost() {
       await updateDoc(postDocRef, { imageURL: downloadURL });
 
       newPost.imageURL = downloadURL;
-      if (userProfile && userProfile.uid === authUser.uid)
+
+      if (userProfile.uid === authUser.uid)
         createPost({ ...newPost, id: postDocRef.id });
 
-      if (pathname !== "/" && userProfile &&  userProfile.uid === authUser.uid)
+      if (pathname !== "/" && userProfile.uid === authUser.uid)
         addPost({ ...newPost, id: postDocRef.id });
 
       showToast("Success", "Post created successfully", "success");

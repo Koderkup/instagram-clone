@@ -20,6 +20,7 @@ import useLikePost from "../../hooks/useLikePost";
 import { timeAgo } from "../../utils/timeAgo";
 import CommentsModal from "../Modals/CommentsModal";
 
+
 const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const { isCommenting, handlePostComment } = usePostComment();
   const [comment, setComment] = useState("");
@@ -31,7 +32,6 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
     await handlePostComment(post.id, comment);
     setComment("");
   };
-
   return (
     <Box mb={10} marginTop={"auto"}>
       <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={4}>

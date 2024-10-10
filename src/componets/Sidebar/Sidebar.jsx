@@ -1,13 +1,21 @@
-import { Box, Button, Flex, Link, Tooltip } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Link,
+  Tooltip,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { InstagramLogo, InstagramMobileLogo } from "../../assets/constants";
-
 import { BiLogOut } from "react-icons/bi";
 import useLogout from "../../hooks/useLogout";
 import SidebarItems from "./SidebarItems";
+import useIconColorStore from "../../store/iconColorStore";
 
 const Sidebar = () => {
   const { handleLogout, isLoggingOut } = useLogout();
+  const {fill} = useIconColorStore();
   return (
     <Box
       height={"100vh"}
@@ -27,7 +35,7 @@ const Sidebar = () => {
           display={{ base: "none", md: "block" }}
           cursor="pointer"
         >
-          <InstagramLogo />
+          <InstagramLogo fill={fill} />
         </Link>
         <Link
           to={"/"}
@@ -41,7 +49,7 @@ const Sidebar = () => {
           w={10}
           cursor="pointer"
         >
-          <InstagramMobileLogo />
+          <InstagramMobileLogo fill={fill}/>
         </Link>
         <Flex direction={"column"} gap={5} cursor={"pointer"}>
           <SidebarItems />

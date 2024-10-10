@@ -28,6 +28,7 @@ import { firestore, storage } from "../../firebase/firebase";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import usePostStore from "../../store/postStore";
 import Caption from "../Comment/Caption";
+import useIconColorStore from "../../store/iconColorStore";
 
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -37,10 +38,10 @@ const ProfilePost = ({ post }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePost = usePostStore((state) => state.deletePost);
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
+  const fill = useIconColorStore((state) => state.fill);
   const handleDeletePost = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     if (isDeleting) return;
-
     try {
       const imageRef = ref(storage, `posts/${post.id}`);
       await deleteObject(imageRef);
@@ -88,14 +89,14 @@ const ProfilePost = ({ post }) => {
         >
           <Flex alignItems={"center"} justifyContent={"center"} gap={50}>
             <Flex>
-              <AiFillHeart size={20} />
+              <AiFillHeart size={20} color={"white"} />
               <Text fontWeight={"bold"} ml={2}>
                 {post.likes.length}
               </Text>
             </Flex>
 
             <Flex>
-              <FaComment size={20} />
+              <FaComment size={20} color={"white"} />
               <Text fontWeight={"bold"} ml={2}>
                 {post.comments.length}
               </Text>
@@ -120,7 +121,7 @@ const ProfilePost = ({ post }) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton color="white" />
           <ModalBody bg={"black"} pb={5}>
             <Flex
               gap="4"
@@ -153,7 +154,7 @@ const ProfilePost = ({ post }) => {
                       size={"sm"}
                       name="As a Programmer"
                     />
-                    <Text fontWeight={"bold"} fontSize={12}>
+                    <Text fontWeight={"bold"} fontSize={12} color={"white"}>
                       {userProfile.username}
                     </Text>
                   </Flex>
@@ -168,7 +169,7 @@ const ProfilePost = ({ post }) => {
                       onClick={handleDeletePost}
                       isLoading={isDeleting}
                     >
-                      <MdDelete size={20} cursor="pointer" />
+                      <MdDelete size={20} cursor="pointer" color={"white"} />
                     </Button>
                   )}
                 </Flex>
