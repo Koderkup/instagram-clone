@@ -1,14 +1,22 @@
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../firebase/firebase";
-import { doc, setDoc, collection, where, getDocs, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import useShowToast from "./useShowToast";
 import useAuthStore from "../store/authStore";
+
 const useSignUpWithEmailAndPassword = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, , loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const showToast = useShowToast();
   const loginUser = useAuthStore((state) => state.login);
-  const logoutUser = useAuthStore((state) => state.logout);
+
   const signup = async (inputs) => {
     if (
       !inputs.email ||
@@ -16,12 +24,15 @@ const useSignUpWithEmailAndPassword = () => {
       !inputs.username ||
       !inputs.fullName
     ) {
-      showToast("Error", "Please fill all fields", "error");
+      showToast("Error", "Please fill all the fields", "error");
       return;
     }
-    const userRef = collection(firestore, "users");
-    const q = query(userRef, where(username, '==', inputs.username));
+
+    const usersRef = collection(firestore, "users");
+
+    const q = query(usersRef, where("username", "==", inputs.username));
     const querySnapshot = await getDocs(q);
+
     if (!querySnapshot.empty) {
       showToast("Error", "Username already exists", "error");
       return;
@@ -44,8 +55,8 @@ const useSignUpWithEmailAndPassword = () => {
           fullName: inputs.fullName,
           bio: "",
           profilePicURL: "",
-          following: [],
           followers: [],
+          following: [],
           posts: [],
           createdAt: Date.now(),
         };
@@ -57,6 +68,7 @@ const useSignUpWithEmailAndPassword = () => {
       showToast("Error", error.message, "error");
     }
   };
+
   return { loading, error, signup };
 };
 
