@@ -129,10 +129,12 @@ const ProfilePost = ({ post }) => {
               mx={"auto"}
               maxH={"90vh"}
               minH={"50vh"}
+              flexDir={{base: 'column', md: "row"}}
+              overflowY={"auto"}
             >
               <Flex
                 borderRadius={4}
-                overflow={"hidden"}
+                overflow={{base: "auto", md: "hidden"}}
                 border={"1px solid"}
                 borderColor={"whiteAlpha.300"}
                 flex={1.5}
@@ -145,7 +147,6 @@ const ProfilePost = ({ post }) => {
                 flex={1}
                 flexDir={"column"}
                 px={10}
-                display={{ base: "none", md: "flex" }}
               >
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
                   <Flex alignItems={"center"} gap={4}>
